@@ -1,0 +1,3 @@
+[console_scripts]
+aipi = aipi.cli:main
+

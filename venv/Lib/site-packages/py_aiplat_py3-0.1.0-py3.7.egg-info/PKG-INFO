@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: py-aiplat-py3
+Version: 0.1.0
+Summary: 腾讯ai的python3版本
+Home-page: https://github.com/daimon99/py-aiplat-py3
+Author: Daimon
+Author-email: daijian1@qq.com
+License: MIT License
+Description: 腾讯ai的python3版本
+Platform: Programming Language :: Python :: 3
