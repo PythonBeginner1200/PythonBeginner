@@ -8,5 +8,8 @@ draw_info = '还好，平局'
 final_win = '【最终结果：你赢了！】'
 final_fail = '【最终结果：你输了！】'
 final_draw = '【最终结果：平局！】'
+wait_long = 3
+wait_mid = 1.5
+wait_short = 1
 
 
