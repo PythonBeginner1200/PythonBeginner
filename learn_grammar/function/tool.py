@@ -99,9 +99,10 @@ def role_order_manual(roles, game):
     """
     sorted_roles = []
     for role in roles:
-        role['order'] = int(input('你想将{}放在第几个上场(请输入1~{})：'.format(role['name'], game)))
-        print('---------------------------------------')
-    print('我方的出场顺序是：', end='')
+        if len(roles) > 1:
+            role['order'] = int(input('你想将{}放在第几个上场(请输入1~{})：'.format(role['name'], game)))
+            print('---------------------------------------')
+            print('我方的出场顺序是：', end='')
     for i in range(1, game+1):
         for role in roles:
             if role['order'] == i:
