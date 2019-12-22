@@ -4,6 +4,7 @@ role_list = [{'name': '【狂血战士】', 'life': 200, 'attack': 30, 'order': 
              {'name': '【独行剑客】', 'life': 160, 'attack': 55, 'order': 1},
              {'name': '【格斗大师】', 'life': 170, 'attack': 50, 'order': 1},
              {'name': '【枪弹专家】', 'life': 120, 'attack': 80, 'order': 1}]
+
 game_info = '——————————现在是第{}局——————————'
 default_info = '玩家角色：{}vs 敌方角色：{}\n{} 血量: {} 攻击: {}\n{} 血量: {} 攻击: {}\n----------------------'
 role_info = '{} 血量：{} 攻击：{}'
