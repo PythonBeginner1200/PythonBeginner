@@ -6,7 +6,7 @@ import learn_grammar.mapping.mapping_of_RPG_game as info
 import time
 import random
 import copy
-
+import os
 
 def print_default_info(name1, life1, attack1, name2, life2, attack2):
     """
@@ -102,7 +102,7 @@ def role_order_manual(roles, game):
         if len(roles) > 1:
             role['order'] = int(input('你想将{}放在第几个上场(请输入1~{})：'.format(role['name'], game)))
             print('---------------------------------------')
-            print('我方的出场顺序是：', end='')
+    print('我方的出场顺序是：', end='')
     for i in range(1, game+1):
         for role in roles:
             if role['order'] == i:
@@ -135,6 +135,79 @@ def role_order_auto(roles, game):
     print('')
     return sorted_roles
 
+def role_order_manual_3(roles, game):
+    """
+    玩家决定角色出场顺序
+    :param roles: 角色池, object list
+    :param game: 局数
+    :return:
+    """
+    sorted_roles = []
+    for role in roles:
+        if len(roles) > 1:
+            role.order = int(input('你想将{}放在第几个上场(请输入1~{})：'.format(role.name, game)))
+            print('---------------------------------------')
+    print('我方的出场顺序是：', end='')
+    for i in range(1, game+1):
+        for role in roles:
+            if role.order == i:
+                sorted_roles.append(role)
+                print(role.name, end='')
+    print('')
+    return sorted_roles
+
+
+def role_order_auto_3(roles, game):
+    """
+    为NPC决定出场顺序
+    :param roles: role list
+    :param game: 局数
+    :return:
+    """
+    sorted_roles = []
+    order_list = list(range(1, game+1))
+    for role in roles:
+        role_index = random.sample(order_list, 1)[0]
+        role.order = role_index
+        order_list.remove(role_index)
+    print('敌方的出场顺序是：', end='')
+    for i in range(1, game+1):
+        for role in roles:
+            if role.order == i:
+                sorted_roles.append(role)
+                print(role.name, end='')
+    print('')
+    print('')
+    return sorted_roles
+
+def pk_3(player1, player2):
+    """
+    pk过程
+    :param player1: player
+    :param player2: NPC
+    :return: 该场比赛结果，play1赢返回1， play2赢返回-1，平局返回0
+    """
+    player1.attack_buff(player2.name)
+    player2.attack_buff(player1.name)
+    while player1.life > 0 and player2.life > 0:
+        player2.life -= player1.attack
+        print(info.PK_info.format(player1.name, player2.name, player2.life))
+        player1.life -= player2.attack
+        print(info.PK_info.format(player2.name, player1.name, player1.life))
+        print('-----------------------------------')
+        time.sleep(info.wait_short)
+    if player1.life < 0 and player2.life > 0:
+        print(info.fail_info)
+        point = -1
+        time.sleep(info.wait_long)
+    elif player1.life > 0 and player2.life < 0:
+        print(info.win_info)
+        point = 1
+        time.sleep(info.wait_long)
+    else:
+        print(info.draw_info)
+        point = 0
+    return point
 
 
 
